@@ -25,10 +25,8 @@ const getValidationErrors = (schema, model) => Object.keys(schema).reduce((acc, 
     }
   }
   if (rules.test) {
-    let error
-    rules.test(value, (msg) => {
-      error = msg
-    })
+    let error = rules.test(value, model)
+    
     if (error) {
       errors.push(error)
     }
